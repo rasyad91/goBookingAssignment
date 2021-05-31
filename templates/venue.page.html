@@ -1,0 +1,59 @@
+{{template "base" .}}
+<div class="container">
+
+    <div class="row mt-5">
+        <div class="mb-3">
+
+            <div class="col-5">
+                <a class="btn btn-danger" href="/admin">Back to admin</a>
+
+                <hr class="mb-3" style="color:gray">
+
+                {{$res := index .Data "venue"}}
+                <form method="post" novalidate>
+                    
+                    {{with .Form.Errors.Get "name"}}
+                    <label class="text-danger">{{.}}</label>
+                    {{end}}
+                    <div class="mb-3 form-floating">
+
+                        <input type="text"
+                            class="form-control form-control-lg {{with .Form.Errors.Get "name"}} is-invalid{{end}}" id="name" name="name" placeholder="name"
+                            autocomplete="off" {{if $res.Name}} value="{{$res.Name}}" {{end}}>
+                        <label for="name" class="form-label">venue name</label>
+
+
+                    </div>
+
+                    {{with .Form.Errors.Get "type"}}
+                    <label class="text-danger">{{.}}</label>
+                    {{end}}
+                    <div class="mb-3 form-floating">
+                        <input type="text" class="form-control form-control-lg {{with .Form.Errors.Get "type"}} is-invalid{{end}}" id="type" name="type"
+                            placeholder="type" autocomplete="off" {{if $res.Type}}
+                            value="{{$res.Type}}" {{end}}>
+                        <label for="type" class="form-label">venue type</label>
+
+
+                    </div>
+
+
+                    {{with .Form.Errors.Get "capacity"}}
+                    <label class="text-danger">{{.}}</label>
+                    {{end}}
+                    <div class="mb-3 form-floating">
+                        <input type="text" class="form-control form-control-lg {{with .Form.Errors.Get "capacity"}} is-invalid{{end}}" id="capacity" name="capacity"
+                            placeholder="capacity" autocomplete="off" {{if $res.Capacity}}
+                            value="{{$res.Capacity}}" {{end}}>
+                        <label for="capacity" class="form-label">venue capacity</label>
+
+                    </div>
+
+                    <button type="submit" class="btn btn-danger btn-lg">Add venue</button>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,22 @@
+.register{
+    color: whitesmoke;
+    background-color: red;
+}
+
+.login{
+    color: whitesmoke;
+}   
+.login:hover{
+    color: rgb(40, 41, 41);
+    background-color: whitesmoke;
+}
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+
+  .grid {
+      display: grid;
+      place-items: center;
+  }

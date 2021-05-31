@@ -1,0 +1,56 @@
+{{template "base" .}}
+
+{{define "content"}}
+<div class="container mt-5">
+
+    {{$res := index .Data "venue"}}
+    {{if $res}}
+
+    <div class="row">
+        <p class="fs-1">Venues</p>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Venue ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Type</th>
+                <th scope="col">Capacity</th>
+
+                <th scope="col">Delete Venue</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{range $res}}
+            <tr>
+                <td>{{.ID}}</td>
+                <td>{{.Name}}</td>
+                <td>{{.Type}}</td>
+                <td>{{.Capacity}}</td>
+                <td>
+                    <form method="POST">
+                        <input type="hidden" name="venueID" value="{{.ID}}">
+                        <button class="btn btn-danger" type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {{end}}
+        </tbody>
+    </table>
+
+    {{else}}
+
+    <div class="row">
+        <p class="fs-1"> No Venues</p>
+        
+    </div>
+    {{end}}
+    <div class="container">
+        <div class="col">
+            <div class="row-cols-md-5">
+                <a class="btn btn-danger btn-lg" href="/admin/venue">Add New Venue</a> 
+            </div>
+        </div>
+    </div>
+</div>
+{{end}}
